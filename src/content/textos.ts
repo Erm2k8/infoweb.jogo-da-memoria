@@ -1,7 +1,7 @@
 export const textos = {
   titulo: 'Jogo da Memória',
   tituloLinhas: ['Jogo da', 'Memória'],
-  marca: 'Acabou, a(main)!',
+  marca: 'Acabou, a<main>!',
   mudo: { ativar: 'Desativar som', desativar: 'Ativar som' },
 
   inicio: {

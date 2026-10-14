@@ -1,4 +1,4 @@
-# Jogo da Memória · Acabou, a(main)!
+# Jogo da Memória · Acabou, a<main>!
 
 Jogo da memória com as figurinhas favoritas da turma infoweb 2023.1. Tem modo solo (jogadas e tempo) e modo para dois jogadores no mesmo dispositivo, em três dificuldades: Fácil (6 pares), Médio (10) e Difícil (16). Os nomes e o ranking ficam salvos no `localStorage` do navegador.
 

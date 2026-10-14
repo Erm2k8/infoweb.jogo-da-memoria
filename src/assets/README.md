@@ -4,7 +4,7 @@ Coloque os arquivos nesta pasta com os nomes abaixo. A extensão pode ser qualqu
 
 | Arquivo | Uso |
 |---|---|
-| `logo.*` | Logo "Acabou, a(main)!" (tela inicial e verso das cartas) |
+| `logo.*` | Logo "Acabou, a<main>!" (tela inicial e verso das cartas) |
 | `verso-carta.*` | Verso das cartas (opcional, usa o logo se não existir) |
 | `nuvem.*`, `cacto-grande.*`, `cacto-pequeno.*` | Cenário |
 | `imgs/foto-da-turma.*` | Foto da tela "Quem somos" |
