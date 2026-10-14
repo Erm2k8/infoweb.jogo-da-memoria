@@ -1,0 +1,147 @@
+.tela {
+  --gap: clamp(6px, 1.2vmin, 18px);
+  --dino: clamp(52px, min(8vw, 11vh), 120px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2.6vh, 30px);
+  height: 100dvh;
+  padding: clamp(12px, 2.4vh, 24px) var(--gutter) clamp(12px, 2.4vh, 24px);
+  overflow: hidden;
+}
+
+.topo {
+  position: relative;
+  z-index: 2;
+  flex: none;
+}
+
+.faixa {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dino {
+  position: relative;
+  z-index: 1;
+  flex: none;
+}
+
+.balao {
+  flex: 1;
+  min-width: 0;
+  margin-left: calc(var(--dino) * -0.35 - 12px);
+  padding: 8px 20px 8px calc(var(--dino) * 0.35 + 16px);
+}
+
+.balao p {
+  font-size: clamp(14px, min(1.6vw, 2.6vh), 24px);
+  text-align: left;
+}
+
+.icones {
+  display: flex;
+  gap: 8px;
+}
+
+.controles {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+  margin-top: clamp(4px, 1vh, 10px);
+}
+
+.controles > :first-child {
+  justify-self: start;
+}
+
+.controles > :last-child {
+  justify-self: end;
+}
+
+.acoes {
+  display: flex;
+  flex: none;
+  gap: 16px;
+}
+
+.acoes button {
+  min-width: clamp(180px, 17vw, 244px);
+}
+
+.area {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  container-type: size;
+  display: grid;
+  place-items: center;
+}
+
+.aviso {
+  position: absolute;
+  z-index: 3;
+  padding: 0.4em 1.1em;
+  border: 4px solid var(--white);
+  border-radius: 999px;
+  background: var(--cor);
+  color: var(--white);
+  font-family: var(--font-title);
+  max-width: 92cqw;
+  font-size: clamp(22px, 4vmin, 48px);
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: center;
+  overflow-wrap: anywhere;
+  pointer-events: none;
+  box-shadow: 0 10px 0 rgb(21 24 46 / 0.2);
+}
+
+@media (max-width: 1100px) {
+  .acoes button {
+    min-width: 0;
+    padding: 0 18px;
+  }
+}
+
+@media (max-width: 900px) {
+  .acoes {
+    gap: 8px;
+  }
+
+  .acoes button {
+    width: 44px;
+    padding: 0;
+  }
+
+  .acoes button > span:last-child {
+    display: none;
+  }
+
+  .controles {
+    gap: 8px;
+  }
+
+  .controles > :first-child,
+  .controles > :last-child {
+    justify-self: stretch;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .faixa {
+    gap: 8px;
+  }
+
+  .balao {
+    padding-right: 12px;
+  }
+
+  .icones button {
+    width: 38px;
+    height: 38px;
+    font-size: 17px;
+  }
+}
