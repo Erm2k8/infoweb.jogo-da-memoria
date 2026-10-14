@@ -66,13 +66,3 @@
   left: 65%;
   width: clamp(160px, 15vw, 230px);
 }
-
-@media (max-width: 640px) {
-  .balao {
-    width: 160px;
-  }
-
-  .balao p {
-    font-size: 15px;
-  }
-}

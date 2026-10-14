@@ -1,5 +1,7 @@
 import { useSyncExternalStore } from 'react'
 
+export const CONSULTA_MOBILE = '(max-width: 640px)'
+
 export function useMediaQuery(consulta: string) {
   return useSyncExternalStore(
     (avisar) => {

@@ -10,6 +10,7 @@ import { Pista } from '../scene/Pista'
 import { Balao } from '../ui/Balao'
 import { Botao } from '../ui/Botao'
 import { IconeAjuda, IconePessoas, IconePlay, IconeTrofeu } from '../ui/icones'
+import { CONSULTA_MOBILE, useMediaQuery } from '../ui/useMediaQuery'
 import { EscolhaJogo } from './EscolhaJogo'
 import { Tela } from './Tela'
 import s from './Inicio.module.css'
@@ -35,6 +36,7 @@ export function Inicio({ onJogar, onRegras, onRanking, onQuemSomos }: Props) {
   const [pulos, setPulos] = useState(0)
   const personagem = useRef<HTMLDivElement>(null)
   const reduzir = useReducedMotion()
+  const mobile = useMediaQuery(CONSULTA_MOBILE)
 
   return (
     <Tela className={s.tela}>
@@ -123,13 +125,17 @@ export function Inicio({ onJogar, onRegras, onRanking, onQuemSomos }: Props) {
         </motion.div>
       </motion.div>
 
-      <Pista dino={personagem} onPular={() => setPulos((n) => n + 1)} />
+      {!mobile && (
+        <>
+          <Pista dino={personagem} onPular={() => setPulos((n) => n + 1)} />
 
-      <div ref={personagem} className={s.personagem}>
-        <Dino largura="100%" entrarCorrendo correndo={!reduzir} pulo={pulos} alturaPulo={100} duracaoPulo={0.6}>
-          <Balao texto={textos.inicio.saudacao} rabicho atraso={500} className={s.balao} />
-        </Dino>
-      </div>
+          <div ref={personagem} className={s.personagem}>
+            <Dino largura="100%" entrarCorrendo correndo={!reduzir} pulo={pulos} alturaPulo={100} duracaoPulo={0.6}>
+              <Balao texto={textos.inicio.saudacao} rabicho atraso={500} className={s.balao} />
+            </Dino>
+          </div>
+        </>
+      )}
 
       <AnimatePresence>
         {escolhendo && <EscolhaJogo onJogar={onJogar} onFechar={() => setEscolhendo(false)} />}

@@ -10,11 +10,13 @@ import { Jogo } from './screens/Jogo'
 import { QuemSomos } from './screens/QuemSomos'
 import { BotaoMudo } from './ui/BotaoMudo'
 import { DialogoInfocleber } from './ui/DialogoInfocleber'
+import { CONSULTA_MOBILE, useMediaQuery } from './ui/useMediaQuery'
 
 type Tela = 'inicio' | 'jogo' | 'quem-somos'
 
 export function App() {
   const [tela, setTela] = useState<Tela>('inicio')
+  const mobile = useMediaQuery(CONSULTA_MOBILE)
   const [modo, setModo] = useState<Modo>('duo')
   const [nomes, setNomes] = useState<Nomes>(() => normalizarNomes([]))
   const [dificuldade, setDificuldade] = useState<Dificuldade>(lerDificuldade)
@@ -28,7 +30,7 @@ export function App() {
 
   return (
     <MotionConfig reducedMotion="user">
-      <Cenario correndo={tela === 'inicio'} />
+      <Cenario correndo={tela === 'inicio' && !mobile} />
       <AnimatePresence mode="wait">
         {tela === 'inicio' && (
           <Inicio
