@@ -110,7 +110,15 @@ export const textos = {
     voltar: 'Voltar',
     fotoAlt: 'Foto da turma infoweb 2023.1',
     fotoPendente: 'Foto da turma',
-    texto:
-      'Somos a turma infoweb 2023.1 e criamos este jogo da memória com as figurinhas favoritas da turma.',
+    texto: [
+      'O código do ensino médio se encerra.',
+      'A marca guarda a cor da nossa conquista.',
+      'Quatro anos em tons de garra e ouro.',
+      'O dinossauro do sem-conexão',
+      'agora ganha forma.',
+      'Superamos os obstáculos do caminho.',
+      'Fechamos a tag principal da nossa história.',
+      'Acabou, a <main>!',
+    ].join('\n'),
   },
 }

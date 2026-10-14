@@ -64,6 +64,7 @@
   font-size: clamp(18px, 1.7vw, 24px);
   font-weight: 500;
   line-height: 1.6;
+  white-space: pre-line;
 }
 
 .dino {
