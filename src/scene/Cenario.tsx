@@ -1,6 +1,9 @@
 import type { CSSProperties } from 'react'
 import { imagens } from '../assets'
+import { VELOCIDADE_PISTA } from './Pista'
 import s from './Cenario.module.css'
+
+const LARGURA_PEDRINHAS = 600
 
 const nuvens = [
   { topo: '20%', largura: 230, duracao: 95, atraso: -70 },
@@ -8,7 +11,7 @@ const nuvens = [
   { topo: '7%', largura: 160, duracao: 150, atraso: -110 },
 ]
 
-export function Cenario() {
+export function Cenario({ correndo = false }: { correndo?: boolean }) {
   return (
     <div className={s.cenario} aria-hidden>
       {nuvens.map((nuvem, i) => (
@@ -32,7 +35,10 @@ export function Cenario() {
       <img src={imagens.cactoGrande} alt="" className={`${s.cacto} ${s.grandeDireita}`} />
       <img src={imagens.cactoPequeno} alt="" className={`${s.cacto} ${s.pequenoDireita}`} />
       <div className={s.chao}>
-        <div className={s.pedrinhas} />
+        <div
+          className={s.pedrinhas}
+          style={correndo ? { animationDuration: `${LARGURA_PEDRINHAS / VELOCIDADE_PISTA}s` } : undefined}
+        />
       </div>
     </div>
   )

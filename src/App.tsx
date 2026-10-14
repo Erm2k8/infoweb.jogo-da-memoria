@@ -28,7 +28,7 @@ export function App() {
 
   return (
     <MotionConfig reducedMotion="user">
-      <Cenario />
+      <Cenario correndo={tela === 'inicio'} />
       <AnimatePresence mode="wait">
         {tela === 'inicio' && (
           <Inicio

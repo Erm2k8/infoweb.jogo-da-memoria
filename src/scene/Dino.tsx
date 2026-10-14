@@ -1,5 +1,5 @@
-import { motion, useAnimate } from 'motion/react'
-import { useEffect, useRef, useState } from 'react'
+import { motion, useAnimate, type AnimationOptions } from 'motion/react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { dino } from '../assets'
 import { textos } from '../content/textos'
 import s from './Dino.module.css'
@@ -14,7 +14,9 @@ type Props = {
   correndo?: boolean
   entrarCorrendo?: boolean
   alturaPulo?: number
+  duracaoPulo?: number
   className?: string
+  children?: ReactNode
 }
 
 export function Dino({
@@ -23,9 +25,12 @@ export function Dino({
   correndo = false,
   entrarCorrendo = false,
   alturaPulo = 55,
+  duracaoPulo = 0.45,
   className,
+  children,
 }: Props) {
-  const [escopo, animar] = useAnimate<HTMLButtonElement>()
+  const [escopo, animar] = useAnimate<HTMLDivElement>()
+  const botao = useRef<HTMLButtonElement>(null)
   const [chegou, setChegou] = useState(!entrarCorrendo)
   const [quadro, setQuadro] = useState(0)
   const [piscando, setPiscando] = useState(false)
@@ -56,14 +61,15 @@ export function Dino({
   }, [corre])
 
   const pular = async () => {
-    if (pulandoRef.current || !escopo.current) return
+    if (pulandoRef.current || !escopo.current || !botao.current) return
     pulandoRef.current = true
     setPulando(true)
-    await animar(
-      escopo.current,
-      { y: ['0%', `-${alturaPulo}%`, '0%'], scaleY: [1, 1.04, 0.94, 1] },
-      { duration: 0.45, times: [0, 0.45, 1], ease: ['easeOut', 'easeIn'] },
-    )
+    const opcoes: AnimationOptions = { duration: duracaoPulo, times: [0, 0.45, 1], ease: ['easeOut', 'easeIn'] }
+    // O salto leva junto o que estiver preso ao dino (como o balão); só o dino achata.
+    await Promise.all([
+      animar(escopo.current, { y: ['0%', `-${alturaPulo}%`, '0%'] }, opcoes),
+      animar(botao.current, { scaleY: [1, 1.04, 0.94, 1] }, opcoes),
+    ])
     pulandoRef.current = false
     setPulando(false)
   }
@@ -83,9 +89,12 @@ export function Dino({
       transition={{ duration: 0.6, ease: [0.25, 0.8, 0.4, 1] }}
       onAnimationComplete={() => setChegou(true)}
     >
-      <button ref={escopo} type="button" className={s.botao} onClick={pular} aria-label={textos.regras.nome}>
-        <img src={src} alt="" className="pixelado" draggable={false} />
-      </button>
+      <div ref={escopo} className={s.salto}>
+        <button ref={botao} type="button" className={s.botao} onClick={pular} aria-label={textos.regras.nome}>
+          <img src={src} alt="" className="pixelado" draggable={false} />
+        </button>
+        {children}
+      </div>
     </motion.div>
   )
 }

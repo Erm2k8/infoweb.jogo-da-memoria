@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.salto {
+  position: relative;
+}
+
 .botao {
   display: block;
   width: 100%;

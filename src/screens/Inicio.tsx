@@ -1,11 +1,12 @@
-import { AnimatePresence, motion } from 'motion/react'
-import { useState } from 'react'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
+import { useRef, useState } from 'react'
 import { imagens } from '../assets'
 import { textos } from '../content/textos'
 import type { Dificuldade } from '../game/dificuldades'
 import type { Nomes } from '../game/jogadores'
 import type { Modo } from '../game/reducer'
 import { Dino } from '../scene/Dino'
+import { Pista } from '../scene/Pista'
 import { Balao } from '../ui/Balao'
 import { Botao } from '../ui/Botao'
 import { IconeAjuda, IconePessoas, IconePlay, IconeTrofeu } from '../ui/icones'
@@ -31,6 +32,9 @@ const entradaBotao = {
 
 export function Inicio({ onJogar, onRegras, onRanking, onQuemSomos }: Props) {
   const [escolhendo, setEscolhendo] = useState(false)
+  const [pulos, setPulos] = useState(0)
+  const personagem = useRef<HTMLDivElement>(null)
+  const reduzir = useReducedMotion()
 
   return (
     <Tela className={s.tela}>
@@ -119,9 +123,12 @@ export function Inicio({ onJogar, onRegras, onRanking, onQuemSomos }: Props) {
         </motion.div>
       </motion.div>
 
-      <div className={s.personagem}>
-        <Balao texto={textos.inicio.saudacao} rabicho atraso={500} className={s.balao} />
-        <Dino largura="100%" entrarCorrendo />
+      <Pista dino={personagem} onPular={() => setPulos((n) => n + 1)} />
+
+      <div ref={personagem} className={s.personagem}>
+        <Dino largura="100%" entrarCorrendo correndo={!reduzir} pulo={pulos} alturaPulo={100} duracaoPulo={0.6}>
+          <Balao texto={textos.inicio.saudacao} rabicho atraso={500} className={s.balao} />
+        </Dino>
       </div>
 
       <AnimatePresence>

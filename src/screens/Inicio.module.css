@@ -62,17 +62,9 @@
 
 .balao {
   position: absolute;
-  bottom: calc(100% + 24px);
-  left: 95%;
-  width: clamp(200px, 20vw, 280px);
-}
-
-@media (max-width: 1100px) {
-  .balao {
-    bottom: 60%;
-    left: 100%;
-    width: 210px;
-  }
+  bottom: calc(100% + 48px);
+  left: 65%;
+  width: clamp(160px, 15vw, 230px);
 }
 
 @media (max-width: 640px) {
