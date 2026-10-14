@@ -1,0 +1,149 @@
+.slot {
+  width: var(--carta-w);
+  height: var(--carta-h);
+  perspective: 900px;
+}
+
+.carta {
+  --borda: var(--orange);
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.carta[aria-disabled='true'] {
+  cursor: default;
+}
+
+.carta:focus-visible {
+  outline-offset: 4px;
+  border-radius: var(--radius-lg);
+}
+
+.aberta {
+  --borda: var(--cor-vez, var(--yellow));
+}
+
+.encontrada {
+  --borda: var(--dono, var(--match));
+}
+
+.errada {
+  --borda: var(--red);
+}
+
+.miolo {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+.verso,
+.frente {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 2px solid var(--borda);
+  border-radius: var(--radius-lg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.verso {
+  background: var(--paper);
+}
+
+.verso::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px dashed var(--orange);
+  border-radius: 12px;
+  background: var(--card);
+}
+
+.carta:hover .verso,
+.carta:focus-visible .verso {
+  border-color: var(--cor-vez, var(--yellow));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--cor-vez, var(--yellow)) 35%, transparent);
+}
+
+.carta[aria-disabled='true']:hover .verso {
+  border-color: var(--borda);
+  box-shadow: none;
+}
+
+.verso img {
+  position: relative;
+  width: min(68%, calc(var(--carta-h) * 0.68));
+  height: auto;
+}
+
+.frente {
+  padding: 4px;
+  background: var(--card-open);
+  border-width: 3px;
+  transform: rotateY(180deg);
+}
+
+.frente img,
+.padrao {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.padrao {
+  display: grid;
+  place-items: center;
+  color: var(--white);
+  font-family: var(--font-title);
+  font-size: calc(min(var(--carta-w), var(--carta-h)) * 0.42);
+  font-weight: 700;
+  text-shadow: 3px 3px 0 rgb(0 0 0 / 0.25);
+}
+
+.invertida {
+  border: 4px solid;
+  background: var(--white);
+  text-shadow: none;
+}
+
+.selo {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: clamp(18px, 22%, 28px);
+  aspect-ratio: 1;
+  border: 2px solid var(--white);
+  border-radius: 50%;
+  background: var(--dono);
+  color: var(--white);
+  font-family: var(--font-title);
+  font-size: clamp(11px, 1.2vw, 15px);
+  font-weight: 700;
+}
+
+.particulas {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  pointer-events: none;
+}
+
+.particulas span {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  margin: -5px;
+}

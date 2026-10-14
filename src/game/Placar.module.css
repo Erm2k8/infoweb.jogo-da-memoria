@@ -1,0 +1,157 @@
+.placar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 148px;
+  height: 64px;
+  padding: 0 16px 0 10px;
+  background: var(--paper);
+  border: 1px solid var(--orange);
+  border-radius: var(--radius);
+}
+
+.direita {
+  flex-direction: row-reverse;
+  padding: 0 10px 0 16px;
+}
+
+.icone {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--yellow);
+  font-size: 20px;
+}
+
+.textos {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 0;
+  line-height: 1.1;
+}
+
+.direita .textos {
+  align-items: flex-start;
+}
+
+.rotulo {
+  max-width: 100%;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.valor {
+  font-size: 22px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.destaque {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.jogador {
+  min-width: 200px;
+  height: 68px;
+  border: 2px solid var(--cor);
+  transform-origin: left center;
+}
+
+.jogador.direita {
+  transform-origin: right center;
+}
+
+.jogador .icone {
+  width: 44px;
+  height: 44px;
+  background: var(--cor);
+  color: var(--white);
+  font-family: var(--font-title);
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.jogador .rotulo {
+  color: var(--cor);
+  font-size: 15px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.ativo {
+  background: color-mix(in srgb, var(--cor) 12%, var(--white));
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--cor) 25%, transparent);
+}
+
+.espera {
+  border-style: dashed;
+}
+
+.suaVez {
+  position: absolute;
+  inset: auto 0 -13px;
+  width: max-content;
+  margin-inline: auto;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: var(--cor);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.suaVez span {
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .placar,
+  .jogador {
+    min-width: 0;
+    height: 52px;
+    gap: 8px;
+    padding: 0 10px 0 6px;
+  }
+
+  .direita,
+  .jogador.direita {
+    padding: 0 6px 0 10px;
+  }
+
+  .icone,
+  .jogador .icone {
+    width: 32px;
+    height: 32px;
+    font-size: 17px;
+  }
+
+  .jogador .rotulo {
+    font-size: 12px;
+  }
+
+  .valor {
+    font-size: 17px;
+  }
+
+  .suaVez {
+    bottom: -11px;
+    padding: 2px 8px;
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,12 @@
+.grade {
+  --w0: calc((100cqw - (var(--colunas) - 1) * var(--gap)) / var(--colunas));
+  --h0: calc((100cqh - (var(--linhas) - 1) * var(--gap)) / var(--linhas));
+  --carta-w: min(var(--w0), calc(var(--h0) * 1.25));
+  --carta-h: min(var(--h0), calc(var(--w0) * 1.2));
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(var(--colunas), var(--carta-w));
+  gap: var(--gap);
+  justify-content: center;
+}

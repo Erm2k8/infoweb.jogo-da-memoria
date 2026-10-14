@@ -1,0 +1,77 @@
+.confete {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.confete span {
+  position: absolute;
+  top: 0;
+}
+
+.dino {
+  display: flex;
+  justify-content: center;
+  margin: -8px 0 16px;
+  padding-top: 48px;
+}
+
+.mensagem {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.pontos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.jogador {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px;
+  border: 2px solid var(--cor);
+  border-radius: var(--radius);
+  background: var(--white);
+}
+
+.ganhador {
+  background: color-mix(in srgb, var(--cor) 14%, var(--white));
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--cor) 25%, transparent);
+}
+
+.jogador span {
+  overflow: hidden;
+  color: var(--cor);
+  font-size: 15px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.jogador strong {
+  font-size: 24px;
+  font-variant-numeric: tabular-nums;
+}
+
+.recorde {
+  display: inline-block;
+  margin: 16px 0 0;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--yellow);
+  font-weight: 700;
+}
+
+.botoes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}

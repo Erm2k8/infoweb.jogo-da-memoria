@@ -1,0 +1,106 @@
+.seletor {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.opcao {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  min-height: 112px;
+  padding: 18px 8px 10px;
+  border: 2px solid var(--cream);
+  border-radius: var(--radius);
+  background: var(--white);
+  cursor: pointer;
+}
+
+.marcador {
+  position: absolute;
+  inset: -2px;
+  border: 2px solid var(--orange);
+  border-radius: var(--radius);
+  background: var(--card-open);
+}
+
+.previa {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--colunas), 6px);
+  gap: 2px;
+  margin-bottom: 6px;
+}
+
+.previa span {
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  background: var(--orange);
+  opacity: 0.55;
+}
+
+.opcao[aria-checked='true'] .previa span {
+  opacity: 1;
+}
+
+.nome,
+.pares {
+  position: relative;
+}
+
+.nome {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.pares {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.selo {
+  position: absolute;
+  top: -11px;
+  left: 0;
+  right: 0;
+  width: max-content;
+  margin-inline: auto;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--green);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.compacto {
+  gap: 4px;
+  padding: 4px;
+  border-radius: var(--radius);
+  background: var(--cream);
+}
+
+.compacto .opcao {
+  min-height: 0;
+  padding: 6px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+}
+
+.compacto .marcador {
+  inset: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  box-shadow: 0 1px 3px rgb(21 24 46 / 0.15);
+}
+
+.compacto .nome {
+  font-size: 14px;
+  font-weight: 600;
+}
