@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 84" width="96" height="84" shape-rendering="crispEdges"><path fill="#15182e" d="M52 0h32v4h-32zM48 4h8v4h-8zM60 4h28v4h-28zM48 8h40v4h-40zM48 12h40v4h-40zM48 16h40v4h-40zM48 20h20v4h-20zM48 24h32v4h-32zM0 28h4v4h-4zM44 28h20v4h-20zM0 32h4v4h-4zM40 32h24v4h-24zM0 36h8v4h-8zM36 36h28v4h-28zM0 40h12v4h-12zM32 40h40v4h-40zM0 44h16v4h-16zM28 44h32v4h-32zM68 44h4v4h-4zM0 48h56v4h-56zM4 52h52v4h-52zM8 56h44v4h-44zM12 60h36v4h-36zM16 64h28v4h-28zM20 68h12v4h-12zM36 68h8v4h-8zM20 72h8v4h-8zM40 72h4v4h-4zM20 76h4v4h-4zM40 76h4v4h-4zM20 80h8v4h-8zM40 80h8v4h-8z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" shape-rendering="crispEdges">
+<clipPath id="c"><rect width="64" height="64" rx="14"/></clipPath>
+<g clip-path="url(#c)">
+<rect width="64" height="64" fill="#b7ccfb"/>
+<rect y="56" width="64" height="8" fill="#f6f6f6"/>
+<rect y="56" width="64" height="2" fill="#658b61"/>
+<path fill="#15182e" transform="translate(3 5.6) scale(.6)" d="M52 0h32v4h-32zM48 4h8v4h-8zM60 4h28v4h-28zM48 8h40v4h-40zM48 12h40v4h-40zM48 16h40v4h-40zM48 20h20v4h-20zM48 24h32v4h-32zM0 28h4v4h-4zM44 28h20v4h-20zM0 32h4v4h-4zM40 32h24v4h-24zM0 36h8v4h-8zM36 36h28v4h-28zM0 40h12v4h-12zM32 40h40v4h-40zM0 44h16v4h-16zM28 44h32v4h-32zM68 44h4v4h-4zM0 48h56v4h-56zM4 52h52v4h-52zM8 56h44v4h-44zM12 60h36v4h-36zM16 64h28v4h-28zM20 68h12v4h-12zM36 68h8v4h-8zM20 72h8v4h-8zM40 72h4v4h-4zM20 76h4v4h-4zM40 76h4v4h-4zM20 80h8v4h-8zM40 80h8v4h-8z"/>
+</g>
+</svg>
