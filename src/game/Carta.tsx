@@ -53,7 +53,7 @@ type Props = {
 }
 
 export const Carta = memo(function Carta({ carta, indice, posicao, errou, bloqueado, dono, onVirar }: Props) {
-  const { figurinha, virada, encontrada } = carta
+  const { figurinha, lado, virada, encontrada } = carta
   const revelada = virada || encontrada
   const podeVirar = !revelada && !bloqueado
   const estado = encontrada ? s.encontrada : errou ? s.errada : virada ? s.aberta : ''
@@ -88,7 +88,7 @@ export const Carta = memo(function Carta({ carta, indice, posicao, errou, bloque
             <img src={imagens.versoCarta} alt="" draggable={false} />
           </span>
           <span className={s.frente}>
-            <Face figurinha={figurinha} />
+            <Face figurinha={figurinha} lado={lado} />
             {dono && <span className={s.selo}>{dono.numero}</span>}
           </span>
         </motion.span>
@@ -110,8 +110,8 @@ export const Carta = memo(function Carta({ carta, indice, posicao, errou, bloque
   )
 })
 
-function Face({ figurinha }: { figurinha: Figurinha }) {
-  if (figurinha.src) return <img src={figurinha.src} alt="" draggable={false} />
+function Face({ figurinha, lado }: { figurinha: Figurinha; lado: 0 | 1 }) {
+  if (figurinha.imagens) return <img src={figurinha.imagens[lado]} alt="" draggable={false} />
   const cor = coresPadrao[(figurinha.numero - 1) % coresPadrao.length]
   const invertida = figurinha.numero > coresPadrao.length
   return (

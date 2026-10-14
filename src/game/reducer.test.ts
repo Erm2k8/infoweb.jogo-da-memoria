@@ -27,13 +27,17 @@ const virar = (estado: Estado, indice: number, agora = 1000) => reducer(estado, 
 
 describe('deck', () => {
   it.each(Object.values(NIVEIS))('monta $pares pares completando com figurinhas padrão', ({ pares }) => {
-    const figurinhas = escolherFigurinhas([{ id: 'ana', nome: 'Ana', src: 'ana.png' }], pares, (n) => `Figurinha ${n}`)
+    const imagens = ['ana-1.png', 'ana-2.png'] as const
+    const figurinhas = escolherFigurinhas([{ id: 'ana', nome: 'Ana', imagens }], pares, (n) => `Figurinha ${n}`)
     expect(figurinhas).toHaveLength(pares)
-    expect(figurinhas.filter((f) => f.src)).toHaveLength(1)
+    expect(figurinhas.filter((f) => f.imagens)).toHaveLength(1)
 
     const cartas = criarCartas(figurinhas)
     expect(cartas).toHaveLength(pares * 2)
-    for (const f of figurinhas) expect(indicesDoPar(cartas, f.id)).toHaveLength(2)
+    for (const f of figurinhas) {
+      const par = indicesDoPar(cartas, f.id)
+      expect(par.map((i) => cartas[i].lado).sort()).toEqual([0, 1])
+    }
   })
 })
 

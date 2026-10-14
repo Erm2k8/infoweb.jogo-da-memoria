@@ -22,10 +22,10 @@ const dinoPadrao = porNome(import.meta.glob<string>('./placeholder/dino/*.svg', 
   eager: true,
   import: 'default',
 }))
-const figurinhaArquivos = import.meta.glob<string>('./figurinhas/*.{svg,png,jpg,jpeg,webp,avif,gif}', {
+const cartaArquivos = porNome(import.meta.glob<string>('./cartas/*.{svg,png,jpg,jpeg,webp,avif,gif}', {
   eager: true,
   import: 'default',
-})
+}))
 const fonteArquivos = import.meta.glob<string>('./fonts/titulo.{woff2,woff,ttf,otf}', {
   eager: true,
   import: 'default',
@@ -50,13 +50,16 @@ export const dino = {
   grande: dinoArquivos.grande ?? quadro('parado'),
 }
 
-export const figurinhas = Object.entries(figurinhaArquivos)
-  .sort(([a], [b]) => a.localeCompare(b))
-  .map(([caminho, src]) => {
-    const id = caminho.split('/').pop()!.replace(/\.[^.]+$/, '')
-    const nome = id.replace(/[-_]+/g, ' ').replace(/(^|\s)\p{L}/gu, (letra) => letra.toUpperCase())
-    return { id, nome, src }
-  })
+const paresDeCartas = new Map<string, string[]>()
+for (const [arquivo, src] of Object.entries(cartaArquivos).sort(([a], [b]) => a.localeCompare(b))) {
+  const id = arquivo.replace(/-[12]$/, '')
+  paresDeCartas.set(id, [...(paresDeCartas.get(id) ?? []), src])
+}
+
+export const figurinhas = [...paresDeCartas].map(([id, [a, b = a]]) => {
+  const nome = id.replace(/[-_]+/g, ' ').replace(/(^|\s)\p{L}/gu, (letra) => letra.toUpperCase())
+  return { id, nome, imagens: [a, b] as const }
+})
 
 export const sons = porNome(import.meta.glob<string>('./sons/*.{mp3,ogg,wav,m4a}', {
   eager: true,

@@ -10,7 +10,7 @@ Coloque os arquivos nesta pasta com os nomes abaixo. A extensão pode ser qualqu
 | `foto-turma.*` | Foto da tela "Quem somos" |
 | `dino/parado.*`, `dino/piscando.*`, `dino/correndo-1.*`, `dino/correndo-2.*`, `dino/pulando.*` | Quadros do Infocléber |
 | `dino/grande.*` | Infocléber no diálogo de regras (opcional, usa `parado`) |
-| `figurinhas/*` | Figurinhas das cartas. O nome do arquivo vira o nome lido pelo leitor de tela (`maria-clara.webp` → "Maria Clara"). Com mais de 16, cada partida sorteia 16; com menos, o jogo completa com cartas numeradas. |
+| `cartas/<nome>-1.*`, `cartas/<nome>-2.*` | As duas imagens de cada par (uma em cada carta). Sem o sufixo, a mesma imagem aparece nas duas. O nome vira o nome lido pelo leitor de tela (`maria-clara-1.webp` → "Maria Clara"). Com mais de 16 pares, cada partida sorteia 16; com menos, o jogo completa com cartas numeradas. |
 | `sons/virar.*`, `sons/acerto.*`, `sons/erro.*`, `sons/vitoria.*`, `sons/clique.*` | Efeitos sonoros (`.mp3`, `.ogg`, `.wav`, `.m4a`). Sem eles, o jogo toca bipes sintetizados. |
 | `fonts/titulo.woff2` | Fonte original do título (opcional, o padrão é Pixelify Sans) |
 

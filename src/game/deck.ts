@@ -1,13 +1,14 @@
 export interface Figurinha {
   id: string
   nome: string
-  src?: string
+  imagens?: readonly [string, string]
   numero: number
 }
 
 export interface Carta {
   id: number
   figurinha: Figurinha
+  lado: 0 | 1
   virada: boolean
   encontrada: boolean
   dono: 0 | 1 | null
@@ -40,10 +41,11 @@ export function escolherFigurinhas(
 }
 
 export function criarCartas(figurinhas: readonly Figurinha[], aleatorio: Aleatorio = Math.random): Carta[] {
-  const pares = figurinhas.flatMap((figurinha) => [figurinha, figurinha])
-  return embaralhar(pares, aleatorio).map((figurinha, id) => ({
+  const pares = figurinhas.flatMap((figurinha) => [0, 1].map((lado) => ({ figurinha, lado: lado as 0 | 1 })))
+  return embaralhar(pares, aleatorio).map(({ figurinha, lado }, id) => ({
     id,
     figurinha,
+    lado,
     virada: false,
     encontrada: false,
     dono: null,
