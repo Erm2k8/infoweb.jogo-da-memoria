@@ -12,14 +12,20 @@ type Props = {
 
 export function Modal({ titulo, onFechar, children }: Props) {
   const painel = useRef<HTMLDivElement>(null)
+  const fechar = useRef(onFechar)
+  fechar.current = onFechar
+  const fechavel = Boolean(onFechar)
 
   useEffect(() => {
     painel.current?.querySelector<HTMLElement>('button:not([data-fechar])')?.focus()
-    if (!onFechar) return
-    const aoTeclar = (evento: KeyboardEvent) => evento.key === 'Escape' && onFechar()
+  }, [])
+
+  useEffect(() => {
+    if (!fechavel) return
+    const aoTeclar = (evento: KeyboardEvent) => evento.key === 'Escape' && fechar.current?.()
     window.addEventListener('keydown', aoTeclar)
     return () => window.removeEventListener('keydown', aoTeclar)
-  }, [onFechar])
+  }, [fechavel])
 
   return (
     <motion.div
