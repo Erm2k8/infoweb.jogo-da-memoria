@@ -22,6 +22,10 @@ const dinoPadrao = porNome(import.meta.glob<string>('./placeholder/dino/*.svg', 
   eager: true,
   import: 'default',
 }))
+const imgs = porNome(import.meta.glob<string>('./imgs/*.{svg,png,jpg,jpeg,webp,avif,gif}', {
+  eager: true,
+  import: 'default',
+}))
 const cartaArquivos = porNome(import.meta.glob<string>('./cartas/*.{svg,png,jpg,jpeg,webp,avif,gif}', {
   eager: true,
   import: 'default',
@@ -37,7 +41,7 @@ export const imagens = {
   nuvem: raiz.nuvem ?? raizPadrao.nuvem,
   cactoGrande: raiz['cacto-grande'] ?? raizPadrao['cacto-grande'],
   cactoPequeno: raiz['cacto-pequeno'] ?? raizPadrao['cacto-pequeno'],
-  fotoTurma: raiz['foto-turma'] as string | undefined,
+  fotoTurma: (raiz['foto-turma'] ?? imgs['foto-da-turma']) as string | undefined,
 }
 
 const quadro = (nome: string) => dinoArquivos[nome] ?? dinoPadrao[nome]

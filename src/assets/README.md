@@ -7,7 +7,7 @@ Coloque os arquivos nesta pasta com os nomes abaixo. A extensão pode ser qualqu
 | `logo.*` | Logo "Acabou, a(main)!" (tela inicial e verso das cartas) |
 | `verso-carta.*` | Verso das cartas (opcional, usa o logo se não existir) |
 | `nuvem.*`, `cacto-grande.*`, `cacto-pequeno.*` | Cenário |
-| `foto-turma.*` | Foto da tela "Quem somos" |
+| `imgs/foto-da-turma.*` | Foto da tela "Quem somos" |
 | `dino/parado.*`, `dino/piscando.*`, `dino/correndo-1.*`, `dino/correndo-2.*`, `dino/pulando.*` | Quadros do Infocléber |
 | `dino/grande.*` | Infocléber no diálogo de regras (opcional, usa `parado`) |
 | `cartas/<nome>-1.*`, `cartas/<nome>-2.*` | As duas imagens de cada par (uma em cada carta). Sem o sufixo, a mesma imagem aparece nas duas. O nome vira o nome lido pelo leitor de tela (`maria-clara-1.webp` → "Maria Clara"). Com mais de 16 pares, cada partida sorteia 16; com menos, o jogo completa com cartas numeradas. |
