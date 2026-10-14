@@ -1,0 +1,90 @@
+.cenario {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--sky);
+}
+
+.nuvem {
+  position: absolute;
+  left: 0;
+  height: auto;
+  animation: derivar var(--duracao) linear var(--atraso) infinite;
+}
+
+@keyframes derivar {
+  from {
+    transform: translateX(100vw);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.chao {
+  position: absolute;
+  inset: auto 0 0;
+  height: var(--ground-h);
+  background: var(--ground);
+  border-top: 3px solid var(--ground-line);
+}
+
+.pedrinhas {
+  height: 70%;
+  margin-top: 10px;
+  background: url('./pedrinhas.svg') repeat-x 0 0 / 600px 80px;
+  animation: rolar 40s linear infinite;
+}
+
+@keyframes rolar {
+  to {
+    background-position-x: -600px;
+  }
+}
+
+.cacto {
+  position: absolute;
+  bottom: calc(var(--ground-h) - 28px);
+  height: auto;
+}
+
+.grandeEsquerda {
+  left: 2%;
+  width: clamp(56px, 6.5vw, 96px);
+}
+
+.pequenoEsquerda {
+  left: calc(2% + clamp(56px, 6.5vw, 96px) + 4px);
+  width: clamp(26px, 2.8vw, 40px);
+}
+
+.grandeDireita {
+  right: 9%;
+  width: clamp(56px, 6.5vw, 96px);
+}
+
+.pequenoDireita {
+  right: calc(9% + clamp(56px, 6.5vw, 96px) + 6px);
+  width: clamp(26px, 2.8vw, 40px);
+}
+
+@media (max-width: 640px) {
+  .pequenoDireita,
+  .grandeDireita {
+    right: 3%;
+  }
+
+  .pequenoDireita {
+    right: calc(3% + 62px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nuvem,
+  .pedrinhas {
+    animation-play-state: paused;
+  }
+}

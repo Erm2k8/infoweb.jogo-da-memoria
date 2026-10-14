@@ -1,0 +1,19 @@
+.dino {
+  position: relative;
+}
+
+.botao {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  transform-origin: 50% 100%;
+}
+
+.botao img {
+  width: 100%;
+  height: auto;
+  user-select: none;
+}
