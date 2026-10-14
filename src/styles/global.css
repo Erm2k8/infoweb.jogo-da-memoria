@@ -1,3 +1,13 @@
+/* Patrick Hand é menor que a fonte anterior no mesmo font-size; o size-adjust mantém o tamanho dos textos. */
+@font-face {
+  font-family: 'Patrick Hand';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('@fontsource/patrick-hand/files/patrick-hand-latin-400-normal.woff2') format('woff2');
+  size-adjust: 112%;
+}
+
 *,
 *::before,
 *::after {
