@@ -1,0 +1,46 @@
+:root {
+  --sky: #b7ccfb;
+  --ground: #f6f6f6;
+  --ground-line: #658b61;
+  --pebble: #c6a170;
+  --ink: #15182e;
+  --muted: #606060;
+  --cream: #f1ede6;
+  --paper: #fffdf8;
+  --card: #f8f3ea;
+  --card-open: #fff7ed;
+  --white: #fff;
+  --orange: #d5781b;
+  --orange-dark: #b9620f;
+  --green: #0fb42d;
+  --green-dark: #0b9524;
+  --match: #658b61;
+  --blue: #2563eb;
+  --blue-dark: #1d4fd0;
+  --yellow: #facc15;
+  --red: #eb4925;
+  --indigo: #3f4cae;
+  --salmon: #d66d64;
+  --purple: #7436dd;
+  --p1: #2563eb;
+  --p2: #7436dd;
+
+  --font-ui: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-title: 'Titulo', 'Pixelify Sans', ui-monospace, monospace;
+
+  --radius-sm: 10px;
+  --radius: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 32px;
+
+  --gutter: 16px;
+  --ground-h: clamp(110px, 20vh, 210px);
+  --floor: calc(var(--ground-h) * 0.45);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 32px;
+  }
+}

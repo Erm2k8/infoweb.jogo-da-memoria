@@ -1,0 +1,116 @@
+export const textos = {
+  titulo: 'Jogo da Memória',
+  tituloLinhas: ['Jogo da', 'Memória'],
+  marca: 'Acabou, a(main)!',
+  mudo: { ativar: 'Desativar som', desativar: 'Ativar som' },
+
+  inicio: {
+    saudacao: 'Olá! Eu sou o Infocléber',
+    iniciar: 'Iniciar Jogo',
+    regras: 'Regras do Jogo',
+    quemSomos: 'Quem Somos',
+    ranking: 'Ranking',
+  },
+
+  modos: {
+    titulo: 'Como você quer jogar?',
+    fechar: 'Fechar',
+    solo: {
+      titulo: 'Sozinho',
+      descricao: 'Encontre todos os pares com o menor número de jogadas.',
+    },
+    duo: {
+      titulo: 'Dois jogadores',
+      descricao: 'Revezem no mesmo dispositivo. Quem acerta joga de novo.',
+    },
+    nomesTitulo: 'Quem vai jogar?',
+    nomeTitulo: 'Qual é o seu nome?',
+    nomeRotulo: (n: number) => `Nome do jogador ${n}`,
+    nomeSolo: 'Seu nome',
+    voltar: 'Voltar',
+    comecar: 'Começar',
+  },
+
+  dificuldades: {
+    titulo: 'Dificuldade',
+    recomendado: 'Recomendado',
+    facil: 'Fácil',
+    medio: 'Médio',
+    dificil: 'Difícil',
+    pares: (n: number) => `${n} pares`,
+  },
+
+  jogo: {
+    objetivo: 'Encontre o par correspondente! Descubra as figurinhas favoritas de infoweb 2023.1!',
+    reiniciar: 'Reiniciar Jogo',
+    regras: 'Regras do Jogo',
+    inicio: 'Voltar ao início',
+    jogador: (n: number) => `Jogador ${n}`,
+    pontos: 'pts',
+    jogadas: 'Jogadas',
+    tempo: 'Tempo',
+    recorde: 'Recorde',
+    cartaVirada: (n: number) => `Carta ${n}, virada para baixo`,
+    figurinha: (n: number) => `Figurinha ${n}`,
+    acertos: ['Boa! Par encontrado!', 'Mandou bem!', 'Que memória!', 'Isso aí!', 'Na mosca!'],
+    erros: ['Quase!', 'Ops, não foi dessa vez.', 'Hmm, essas não combinam.', 'Passou perto!'],
+    acertoDuo: (frase: string, nome: string) => `${frase} +10 pontos para ${nome}. Jogue de novo!`,
+    erroDuo: (frase: string, nome: string) => `${frase} Vez de ${nome}.`,
+    vez: (nome: string) => `Vez de ${nome}!`,
+    comeca: (nome: string) => `${nome} começa!`,
+    suaVez: 'Sua vez!',
+    erroSolo: (frase: string) => `${frase} Tente lembrar onde elas estavam.`,
+  },
+
+  vitoria: {
+    titulo: 'Fim de jogo!',
+    vencedor: (nome: string) => `${nome} venceu!`,
+    empate: 'Empate!',
+    solo: (jogadas: number, tempo: string, nivel: string) =>
+      `Você encontrou todos os pares do nível ${nivel} em ${jogadas} jogadas e ${tempo}.`,
+    novoRecorde: 'Novo recorde!',
+    posicao: (n: number, nivel: string) => `${n}º lugar no ranking do nível ${nivel}!`,
+    ranking: 'Ranking',
+    jogarDeNovo: 'Jogar de novo',
+    inicio: 'Início',
+  },
+
+  regras: {
+    nome: 'Infocléber',
+    continuar: 'Clique para continuar',
+    fechar: 'Fechar regras',
+    falas: [
+      'Olá! Eu sou o Infocléber! Vou te ensinar a jogar!',
+      'Antes de começar, escolha a dificuldade: Fácil, Médio ou Difícil. Quanto mais difícil, mais cartas na mesa!',
+      'Todas as cartas começam viradas para baixo. Clique em uma carta para revelar a figurinha.',
+      'Depois, vire mais uma. Se as duas forem iguais, o par fica revelado.',
+      'Se forem diferentes, elas voltam a ficar viradas para baixo. Tente lembrar onde cada figurinha estava!',
+      'Jogando a dois? Cada par vale 10 pontos. Quem acerta joga de novo e quem erra passa a vez.',
+      'Jogando sozinho? Encontre todos os pares com o menor número de jogadas e no menor tempo.',
+      'Quando todos os pares forem encontrados, o jogo acaba. Boa sorte!',
+    ],
+  },
+
+  ranking: {
+    titulo: 'Ranking',
+    solo: 'Sozinho',
+    duelos: 'Dois jogadores',
+    jogador: 'Jogador',
+    jogadas: 'Jogadas',
+    tempo: 'Tempo',
+    vitorias: 'Vitórias',
+    partidas: 'Partidas',
+    vazioSolo: 'Ninguém completou uma partida sozinho ainda. Seja o primeiro!',
+    vazioDuelos: 'Nenhum duelo registrado ainda. Chame alguém para jogar!',
+    aviso: 'O ranking fica salvo neste navegador.',
+  },
+
+  quemSomos: {
+    titulo: 'Quem somos?',
+    voltar: 'Voltar',
+    fotoAlt: 'Foto da turma infoweb 2023.1',
+    fotoPendente: 'Foto da turma',
+    texto:
+      'Somos a turma infoweb 2023.1 e criamos este jogo da memória com as figurinhas favoritas da turma.',
+  },
+}
