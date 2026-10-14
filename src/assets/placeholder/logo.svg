@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+<circle cx="80" cy="74" r="54" fill="#c6a170"/>
+<path fill="#15182e" shape-rendering="crispEdges" d="M56 30h6v6h-6zM62 30h6v6h-6zM68 30h6v6h-6zM74 30h6v6h-6zM80 30h6v6h-6zM86 30h6v6h-6zM92 30h6v6h-6zM98 30h6v6h-6zM50 36h6v6h-6zM56 36h6v6h-6zM68 36h6v6h-6zM74 36h6v6h-6zM80 36h6v6h-6zM86 36h6v6h-6zM92 36h6v6h-6zM98 36h6v6h-6zM50 42h6v6h-6zM56 42h6v6h-6zM62 42h6v6h-6zM68 42h6v6h-6zM74 42h6v6h-6zM80 42h6v6h-6zM86 42h6v6h-6zM92 42h6v6h-6zM98 42h6v6h-6zM50 48h6v6h-6zM56 48h6v6h-6zM62 48h6v6h-6zM68 48h6v6h-6zM74 48h6v6h-6zM80 48h6v6h-6zM86 48h6v6h-6zM92 48h6v6h-6zM98 48h6v6h-6zM50 54h6v6h-6zM56 54h6v6h-6zM62 54h6v6h-6zM68 54h6v6h-6zM74 54h6v6h-6zM50 60h6v6h-6zM56 60h6v6h-6zM62 60h6v6h-6zM68 60h6v6h-6zM74 60h6v6h-6zM80 60h6v6h-6zM86 60h6v6h-6zM92 60h6v6h-6zM44 66h6v6h-6zM50 66h6v6h-6zM56 66h6v6h-6zM62 66h6v6h-6zM68 66h6v6h-6zM74 66h6v6h-6zM80 66h6v6h-6zM44 72h6v6h-6zM50 72h6v6h-6zM56 72h6v6h-6zM62 72h6v6h-6zM68 72h6v6h-6zM74 72h6v6h-6zM80 72h6v6h-6zM50 78h6v6h-6zM56 78h6v6h-6zM68 78h6v6h-6zM74 78h6v6h-6z"/>
+<path fill="#15182e" d="M22 108a62 62 0 0 0 66 42v-40z"/>
+<g font-family="'Arial Narrow', Impact, sans-serif" font-weight="700" font-size="44" letter-spacing="-1">
+<text x="150" y="70" fill="#15182e" textLength="160" lengthAdjust="spacingAndGlyphs">ACABOU,</text>
+<text x="150" y="122" fill="#15182e" textLength="160" lengthAdjust="spacingAndGlyphs">A<tspan fill="#c6a170">(MAIN)</tspan>!</text>
+</g>
+</svg>
