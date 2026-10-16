@@ -1,9 +1,9 @@
 import { AnimatePresence, motion } from 'motion/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { textos } from '../content/textos'
 import { Modal } from '../ui/Modal'
 import { RECOMENDADA, type Dificuldade } from './dificuldades'
-import { lerRanking } from './ranking'
+import { buscarRanking, type Ranking } from './ranking'
 import { SeletorDificuldade } from './SeletorDificuldade'
 import { formatarTempo } from './useGame'
 import s from './RankingModal.module.css'
@@ -18,6 +18,7 @@ type Props = {
 }
 
 const { ranking: t } = textos
+const VAZIO: Ranking = { solo: { facil: [], medio: [], dificil: [] }, duelos: [] }
 
 export function RankingModal({
   aba: abaInicial = 'solo',
@@ -27,23 +28,34 @@ export function RankingModal({
 }: Props) {
   const [aba, setAba] = useState(abaInicial)
   const [nivel, setNivel] = useState(nivelInicial)
-  const [ranking] = useState(lerRanking)
+  const [ranking, setRanking] = useState<Ranking | 'carregando' | 'erro'>('carregando')
 
+  useEffect(() => {
+    buscarRanking().then(setRanking, () => setRanking('erro'))
+  }, [])
+
+  const dados = typeof ranking === 'object' ? ranking : VAZIO
   const linhas =
     aba === 'solo'
-      ? ranking.solo[nivel].map((r) => ({
+      ? dados.solo[nivel].map((r) => ({
           chave: String(r.id),
           nome: r.nome,
           valores: [r.jogadas, formatarTempo(r.segundos)],
           destaque: r.id === destaque,
         }))
-      : ranking.duelos.slice(0, 10).map((d) => ({
+      : dados.duelos.slice(0, 10).map((d) => ({
           chave: d.nome,
           nome: d.nome,
           valores: [d.vitorias, d.partidas],
           destaque: false,
         }))
   const colunas = aba === 'solo' ? [t.jogadas, t.tempo] : [t.vitorias, t.partidas]
+  const recado =
+    ranking === 'carregando'
+      ? t.carregando
+      : ranking === 'erro'
+        ? t.erro
+        : linhas.length === 0 && (aba === 'solo' ? t.vazioSolo : t.vazioDuelos)
 
   return (
     <Modal titulo={t.titulo} onFechar={onFechar}>
@@ -86,8 +98,8 @@ export function RankingModal({
           exit={{ opacity: 0 }}
           transition={{ duration: 0.15 }}
         >
-          {linhas.length === 0 ? (
-            <p className={s.vazio}>{aba === 'solo' ? t.vazioSolo : t.vazioDuelos}</p>
+          {recado ? (
+            <p className={s.vazio}>{recado}</p>
           ) : (
             <table className={s.tabela}>
               <thead>

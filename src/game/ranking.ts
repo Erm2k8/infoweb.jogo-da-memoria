@@ -49,20 +49,24 @@ export function inserirDuelo(ranking: Ranking, nomes: readonly [string, string],
   return { ...ranking, duelos: duelos.sort(compararDuelos).slice(0, LIMITE_DUELOS) }
 }
 
-export function lerRanking(): Ranking {
+function lerRanking(): Ranking {
   const salvo = ler<{ solo?: ResultadoSolo[] | Partial<Ranking['solo']>; duelos?: Duelista[] }>('ranking', {})
   // Versões sem dificuldade guardavam só a lista do tabuleiro de 16 pares.
   const solo = Array.isArray(salvo.solo) ? { dificil: salvo.solo } : salvo.solo
   return { solo: { facil: [], medio: [], dificil: [], ...solo }, duelos: salvo.duelos ?? [] }
 }
 
-export function registrarSolo(dificuldade: Dificuldade, resultado: Omit<ResultadoSolo, 'id'>) {
+export async function buscarRanking(): Promise<Ranking> {
+  return lerRanking()
+}
+
+export async function registrarSolo(dificuldade: Dificuldade, resultado: Omit<ResultadoSolo, 'id'>) {
   const novo = { ...resultado, id: Date.now() }
   const { ranking, posicao } = inserirSolo(lerRanking(), dificuldade, novo)
   salvar('ranking', ranking)
   return { id: novo.id, posicao }
 }
 
-export function registrarDuelo(nomes: readonly [string, string], vencedor: Jogador | null) {
+export async function registrarDuelo(nomes: readonly [string, string], vencedor: Jogador | null) {
   salvar('ranking', inserirDuelo(lerRanking(), nomes, vencedor))
 }

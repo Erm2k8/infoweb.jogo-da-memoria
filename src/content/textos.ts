@@ -102,6 +102,8 @@ export const textos = {
     partidas: 'Partidas',
     vazioSolo: 'Ninguém completou uma partida sozinho ainda. Seja o primeiro!',
     vazioDuelos: 'Nenhum duelo registrado ainda. Chame alguém para jogar!',
+    carregando: 'Carregando o ranking…',
+    erro: 'Não deu para carregar o ranking. Confira a internet e tente de novo.',
     aviso: 'O ranking fica salvo neste navegador.',
   },
 
