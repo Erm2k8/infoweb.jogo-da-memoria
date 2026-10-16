@@ -1,0 +1,31 @@
+.reacao {
+  --cor: var(--white);
+  position: absolute;
+  bottom: 0;
+  z-index: 3;
+  width: clamp(64px, 14vmin, 150px);
+  aspect-ratio: 1;
+  padding: 4%;
+  border: 4px solid var(--cor);
+  border-radius: 22%;
+  background: var(--white);
+  pointer-events: none;
+  box-shadow: 0 10px 0 rgb(21 24 46 / 0.2);
+}
+
+.esquerda {
+  left: 0;
+  transform-origin: bottom left;
+}
+
+.direita {
+  right: 0;
+  transform-origin: bottom right;
+}
+
+.reacao img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

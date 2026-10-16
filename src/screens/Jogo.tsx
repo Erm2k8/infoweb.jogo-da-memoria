@@ -4,7 +4,8 @@ import { textos } from '../content/textos'
 import { NIVEIS, type Dificuldade } from '../game/dificuldades'
 import { CORES_JOGADOR, type Nomes } from '../game/jogadores'
 import { Contador, Placar } from '../game/Placar'
-import { estaBloqueado, type Estado, type Modo } from '../game/reducer'
+import { ReacaoDino, useReacao, type Lado, type Reacao } from '../game/ReacaoDino'
+import { estaBloqueado, type Estado, type Jogador, type Modo } from '../game/reducer'
 import { Tabuleiro } from '../game/Tabuleiro'
 import { formatarTempo, useGame } from '../game/useGame'
 import { Vitoria } from '../game/Vitoria'
@@ -55,12 +56,31 @@ export function Jogo({ modo, nomes, dificuldade, onRegras, onRanking, onInicio }
   const [aviso, setAviso] = useState<Aviso | null>(null)
   const acertos = estado.cartas.filter((c) => c.encontrada).length / 2
   const duo = modo === 'duo'
+  const [reacaoEsquerda, setReacaoEsquerda] = useReacao()
+  const [reacaoDireita, setReacaoDireita] = useReacao()
+
+  const reagir = (jogador: Jogador, tipo: Reacao['tipo']) => {
+    const lado: Lado = duo && jogador === 0 ? 'esquerda' : 'direita'
+    const mostrar = lado === 'esquerda' ? setReacaoEsquerda : setReacaoDireita
+    mostrar({ id: Date.now(), tipo })
+  }
 
   useEffect(() => {
     if (estado.fim === null) return setMostrarVitoria(false)
     const timer = setTimeout(() => setMostrarVitoria(true), ATRASO_VITORIA)
     return () => clearTimeout(timer)
   }, [estado.fim])
+
+  useEffect(() => {
+    // A jogada que fecha a partida fica com o modal de vitória.
+    if (!estado.ultimo || estado.fim !== null) return
+    reagir(estado.ultimo.jogador, estado.ultimo.tipo)
+  }, [estado.ultimo])
+
+  useEffect(() => {
+    const timer = setTimeout(() => reagir(estado.vez, 'vez'), estado.jogadas === 0 ? 450 : 0)
+    return () => clearTimeout(timer)
+  }, [estado.vez, estado.rodada])
 
   useEffect(() => {
     if (!duo) return
@@ -184,6 +204,9 @@ export function Jogo({ modo, nomes, dificuldade, onRegras, onRanking, onInicio }
             </motion.div>
           )}
         </AnimatePresence>
+
+        <ReacaoDino reacao={reacaoEsquerda} lado="esquerda" cor={duo ? CORES_JOGADOR[0] : undefined} />
+        <ReacaoDino reacao={reacaoDireita} lado="direita" cor={duo ? CORES_JOGADOR[1] : undefined} />
       </div>
 
       <AnimatePresence>
