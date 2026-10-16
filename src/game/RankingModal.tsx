@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useState } from 'react'
 import { textos } from '../content/textos'
+import { supabaseConfigurado } from '../supabase'
 import { Modal } from '../ui/Modal'
 import { RECOMENDADA, type Dificuldade } from './dificuldades'
 import { buscarRanking, type Ranking } from './ranking'
@@ -137,7 +138,7 @@ export function RankingModal({
         </motion.div>
       </AnimatePresence>
 
-      <p className={s.aviso}>{t.aviso}</p>
+      <p className={s.aviso}>{supabaseConfigurado ? t.avisoOnline : t.aviso}</p>
     </Modal>
   )
 }

@@ -105,6 +105,7 @@ export const textos = {
     carregando: 'Carregando o ranking…',
     erro: 'Não deu para carregar o ranking. Confira a internet e tente de novo.',
     aviso: 'O ranking fica salvo neste navegador.',
+    avisoOnline: 'O ranking é o mesmo para todo mundo que joga.',
   },
 
   quemSomos: {
