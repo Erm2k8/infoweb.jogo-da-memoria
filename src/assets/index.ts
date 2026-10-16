@@ -54,6 +54,13 @@ export const dino = {
   grande: dinoArquivos.grande ?? quadro('parado'),
 }
 
+export const reacoes = {
+  acerto: dinoArquivos.acerto as string | undefined,
+  erro: dinoArquivos.erro as string | undefined,
+  vez: dinoArquivos.vez as string | undefined,
+  vitoria: dinoArquivos.vitoria as string | undefined,
+}
+
 const paresDeCartas = new Map<string, string[]>()
 for (const [arquivo, src] of Object.entries(cartaArquivos).sort(([a], [b]) => a.localeCompare(b))) {
   const id = arquivo.replace(/-[12]$/, '')
