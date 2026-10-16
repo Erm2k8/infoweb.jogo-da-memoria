@@ -1,5 +1,6 @@
 import { motion } from 'motion/react'
 import { useEffect, useState, type CSSProperties } from 'react'
+import { reacoes } from '../assets'
 import { textos } from '../content/textos'
 import { Dino } from '../scene/Dino'
 import { Botao } from '../ui/Botao'
@@ -51,6 +52,7 @@ export function Vitoria({
   const ganhador = vencedor(estado)
 
   useEffect(() => {
+    if (reacoes.vitoria) return
     const timer = setInterval(() => setPulos((n) => n + 1), 700)
     return () => clearInterval(timer)
   }, [])
@@ -79,9 +81,15 @@ export function Vitoria({
         ))}
       </div>
       <Modal titulo={titulo}>
-        <div className={s.dino}>
-          <Dino largura="88px" pulo={pulos} />
-        </div>
+        {reacoes.vitoria ? (
+          <div className={s.gif}>
+            <img src={reacoes.vitoria} alt="" className="pixelado" draggable={false} />
+          </div>
+        ) : (
+          <div className={s.dino}>
+            <Dino largura="88px" pulo={pulos} />
+          </div>
+        )}
         {estado.modo === 'solo' ? (
           <p className={s.mensagem}>{textos.vitoria.solo(estado.jogadas, formatarTempo(segundos), nivel)}</p>
         ) : (

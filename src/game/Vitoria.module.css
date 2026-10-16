@@ -18,6 +18,18 @@
   padding-top: 48px;
 }
 
+.gif {
+  display: flex;
+  justify-content: center;
+  margin: -8px 0 12px;
+}
+
+.gif img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+}
+
 .mensagem {
   margin: 0;
   font-size: 18px;
